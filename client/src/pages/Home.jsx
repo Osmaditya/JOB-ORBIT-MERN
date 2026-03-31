@@ -109,7 +109,7 @@ export const Home = () => {
                 <div className='  w-full  flex  pt-28 flex-col justify-start  items-center gap-4'>
 
                     <div className='flex md:flex-row flex-col items-center justify-center md:gap-10 gap-1'>
-                        <div className='md:text-8xl text-6xl titleT'>Job-Orbit</div>
+                        <div className='md:text-8xl text-6xl titleT'>JobOrbit</div>
                         <div className=' flex justify-center items-center pt-1'>
                             <Link to="/jobs" className='font-semibold md:text-2xl text-lg blueCol  md:py-3 py-2 px-6 md:px-10 '>Browse Jobs</Link>
                         </div>
