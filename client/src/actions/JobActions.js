@@ -4,16 +4,13 @@ import {
     jobDetailsRequest, jobDetailsSuccess, jobDetailsFail,
     jobSaveRequest, jobSaveSuccess, jobSaveFail,
     getSavedJobsRequest, getSavedJobsSuccess, getSavedJobsFail
-} from '../slices/JobSlice'
+}  from '../slices/JobSlice'
 
 import {toast} from 'react-toastify'
 import {me} from '../actions/UserActions'
 import axios from 'axios'
 
-// ✅ BASE URL
-const BASE_URL = "https://job-orbit-mern.onrender.com/api/v1"
 
-// ✅ CREATE JOB
 export const createJobPost = (jobData) => async (dispatch) => {
     try{
         dispatch(newPostRequest())
@@ -24,7 +21,11 @@ export const createJobPost = (jobData) => async (dispatch) => {
             } 
         }
 
-        await axios.post(`${BASE_URL}/create/job`, jobData, config)
+        const {data} = await axios.post(
+            "https://job-orbit-mern.onrender.com/api/v1/create/job",
+            jobData,
+            config
+        )
 
         dispatch(newPostSuccess())
         toast.success("Job posted successfully !")
@@ -34,12 +35,14 @@ export const createJobPost = (jobData) => async (dispatch) => {
     }
 }
 
-// ✅ GET ALL JOBS
+
 export const getAllJobs = () => async (dispatch) => {
     try{
         dispatch(allJobsRequest())
 
-        const {data} = await axios.get(`${BASE_URL}/jobs`)
+        const {data} = await axios.get(
+            "https://job-orbit-mern.onrender.com/api/v1/jobs"
+        )
 
         dispatch(allJobsSuccess(data.Jobs))
 
@@ -48,12 +51,14 @@ export const getAllJobs = () => async (dispatch) => {
     }
 }
 
-// ✅ GET SINGLE JOB
+
 export const getSingleJob = (id) => async (dispatch) => {
     try{
         dispatch(jobDetailsRequest())
 
-        const {data} = await axios.get(`${BASE_URL}/job/${id}`)
+        const {data} = await axios.get(
+            `https://job-orbit-mern.onrender.com/api/v1/job/${id}`
+        )
 
         dispatch(jobDetailsSuccess(data.job))
 
@@ -62,7 +67,7 @@ export const getSingleJob = (id) => async (dispatch) => {
     }
 }
 
-// ✅ SAVE JOB
+
 export const saveJob = (id) => async (dispatch) => {
     try{
         dispatch(jobSaveRequest())
@@ -74,7 +79,10 @@ export const saveJob = (id) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.get(`${BASE_URL}/saveJob/${id}`, config)
+        const {data} = await axios.get(
+            `https://job-orbit-mern.onrender.com/api/v1/saveJob/${id}`,
+            config
+        )
 
         dispatch(me())
         dispatch(jobSaveSuccess())
@@ -85,7 +93,7 @@ export const saveJob = (id) => async (dispatch) => {
     }
 } 
 
-// ✅ GET SAVED JOBS
+
 export const getSavedJobs = () => async (dispatch) => {
     try{
         dispatch(getSavedJobsRequest())
@@ -97,7 +105,10 @@ export const getSavedJobs = () => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.get(`${BASE_URL}/getSavedJobs`, config)
+        const {data} = await axios.get(
+            "https://job-orbit-mern.onrender.com/api/v1/getSavedJobs",
+            config
+        )
 
         dispatch(getSavedJobsSuccess(data))
 
