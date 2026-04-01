@@ -3,66 +3,57 @@ const bcrypt = require('bcrypt')
 const { createToken } = require('../middlewares/auth')
 const cloudinary = require('cloudinary')
 
+
 exports.register = async (req, res) => {
     try {
+
         const { name, email, password, avatar, skills, resume } = req.body;
 
-        let avatarData = {};
-        let resumeData = {};
 
-        // ✅ Avatar optional
-        if (avatar) {
-            const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-                folder: 'avatar',
-                crop: "scale",
-            });
+        const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+            folder: 'avatar',
+            
+            crop: "scale",
+        })
 
-            avatarData = {
-                public_id: myCloud.public_id,
-                url: myCloud.secure_url
-            };
-        }
+        const myCloud2 = await cloudinary.v2.uploader.upload(resume, {
+            folder: 'resume',
+           
+            crop: "fit",
+        })
 
-        // ✅ Resume optional
-        if (resume) {
-            const myCloud2 = await cloudinary.v2.uploader.upload(resume, {
-                folder: 'resume',
-                crop: "fit",
-            });
-
-            resumeData = {
-                public_id: myCloud2.public_id,
-                url: myCloud2.secure_url
-            };
-        }
-
-        const hashPass = await bcrypt.hash(password, 10);
-
+        const hashPass = await bcrypt.hash(password, 10)
         const user = await User.create({
             name,
             email,
             password: hashPass,
-            avatar: avatarData,
+            avatar: {
+                public_id: myCloud.public_id,
+                url: myCloud.secure_url
+            },
             skills,
-            resume: resumeData
-        });
+            resume: {
+                public_id: myCloud2.public_id,
+                url: myCloud2.secure_url
+            }
+        })
 
-        const token = createToken(user._id, user.email);
+        const token = createToken(user._id, user.email)
 
         res.status(201).json({
             success: true,
             message: "User Created",
             user,
             token
-        });
-
+        })
     } catch (err) {
         res.status(500).json({
             success: false,
             message: err.message
-        });
+        })
     }
-};
+}
+
 
 exports.login = async (req, res) => {
     try {
