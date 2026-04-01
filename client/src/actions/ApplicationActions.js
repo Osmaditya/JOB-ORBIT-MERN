@@ -1,10 +1,8 @@
 import axios from 'axios'
-import {
-    createApplicationRequest , createApplicationSuccess, createApplicationFail,
+import {createApplicationRequest , createApplicationSuccess, createApplicationFail,
     allAppliedJobsRequest, allAppliedJobsSuccess, allAppliedJobsFail,
     applicationDetailsRequest, applicationDetailsSuccess, applicationDetailsFail,
-    deleteApplicationRequest, deleteApplicationSuccess, deleteApplicationFail
-} from '../slices/ApplicationSlice'
+    deleteApplicationRequest, deleteApplicationSuccess, deleteApplicationFail} from '../slices/ApplicationSlice'
     
 import {me} from '../actions/UserActions'
 import {toast} from 'react-toastify'
@@ -19,11 +17,8 @@ export const createApplication = (id) => async (dispatch) =>{
             } 
         }
 
-        const { data } = await axios.post(
-            `https://job-orbit-mern.onrender.com/api/v1/createApplication/${id}`,
-            config,
-            config
-        )
+
+        const { data } = await axios.post(`https://joblane-backend.onrender.com/api/v1/createApplication/${id}`,config,config) ;
         
         console.log(data)
         dispatch(createApplicationSuccess())
@@ -40,6 +35,7 @@ export const createApplication = (id) => async (dispatch) =>{
 
 export const getAppliedJob = () => async (dispatch) => {
     try{
+
         dispatch(allAppliedJobsRequest())
 
         const config = {
@@ -48,10 +44,7 @@ export const getAppliedJob = () => async (dispatch) => {
             } 
         }
 
-        const {data} = await axios.get(
-            "https://job-orbit-mern.onrender.com/api/v1/getAllApplication",
-            config
-        )
+        const {data} = await axios.get("https://joblane-backend.onrender.com/api/v1/getAllApplication",config) ;
 
         dispatch(allAppliedJobsSuccess(data.allApplications))
 
@@ -63,6 +56,7 @@ export const getAppliedJob = () => async (dispatch) => {
 
 export const getSingleApplication = (id) => async (dispatch) => {
     try{
+
         dispatch(applicationDetailsRequest())
 
         const config = {
@@ -71,10 +65,7 @@ export const getSingleApplication = (id) => async (dispatch) => {
             } 
         }
 
-        const {data} = await axios.get(
-            `https://job-orbit-mern.onrender.com/api/v1/singleApplication/${id}`,
-            config
-        )
+        const {data} = await axios.get(`https://joblane-backend.onrender.com/api/v1/singleApplication/${id}`,config) ;
 
         dispatch(applicationDetailsSuccess(data.application))
 
@@ -85,6 +76,7 @@ export const getSingleApplication = (id) => async (dispatch) => {
 
 export const deleteApplication = (id) => async (dispatch) => {
     try{
+
         dispatch(deleteApplicationRequest())
 
         const config = {
@@ -93,10 +85,7 @@ export const deleteApplication = (id) => async (dispatch) => {
             } 
         }
 
-        const {data} = await axios.delete(
-            `https://job-orbit-mern.onrender.com/api/v1/deleteApplication/${id}`,
-            config
-        )
+        const {data} = await axios.delete(`https://joblane-backend.onrender.com/api/v1/deleteApplication/${id}`,config)
 
         dispatch(deleteApplicationSuccess())
         dispatch(getAppliedJob())
