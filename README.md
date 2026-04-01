@@ -1,89 +1,164 @@
-<h1 align="center" id="title">JobLane</h1>
+# 🚀 JobOrbit — MERN Job Portal
 
-<p align="center"><img src="https://socialify.git.ci/sujaltangde/JobLane/image?forks=1&issues=1&language=1&name=1&owner=1&pulls=1&stargazers=1&theme=Dark" alt="JobLane" width="640" height="320" /></p>
+🔗 **Live Demo:** https://joborbitwebsite.netlify.app/
 
-[![Hits](https://hits.sh/github.com/sujaltangde/JobLane.svg?color=116acc)](https://hits.sh/github.com/sujaltangde/JobLane/)
+---
 
-<p id="description">Full Stack Job application portal built using MERN stack, Focusing on simplifying the job applications.</p>
+## 📌 Overview
 
-<h2>🚀 Demo</h2>
+**JobOrbit** is a full-stack MERN (MongoDB, Express, React, Node.js) job portal designed to connect job seekers with recruiters. It provides a seamless platform for users to explore job opportunities, apply for roles, and manage their profiles efficiently.
 
-[Website](https://joblane.vercel.app/)<br />
+---
 
-  
-  
-<h2>🧐 Features</h2>
+## ✨ Features
 
-Here're some of the project's best features:
+### 👤 User Features
 
-*   User Authentication and Authorization
-*   Job Search and Filtering
-*   Save and Track Jobs
-*   Resume Management
-*   Profile Management
-*   Admin Dashboard
-*   Job Posting
-*   Application Tracking
-*   Messaging and Notifications
-*   Responsive Design
+* 🔐 Authentication (Register/Login with JWT)
+* 🧑‍💼 Create & manage profile
+* 📄 Upload resume (Cloudinary)
+* 🔍 Search & filter jobs
+* 💾 Save jobs for later
+* 📬 Apply to jobs
+* 📊 Track applied jobs
 
-<h2>🔥 Getting Started</h2>
+---
 
-To get started with the assignment project, follow these steps:
+### 🛠️ Admin Features
 
-### Prerequisites
+* ➕ Post new jobs
+* ✏️ Update job listings
+* ❌ Delete jobs
+* 👀 View all applicants
 
-- **Node.js**: Make sure you have Node.js installed on your computer. You can download it from [nodejs.org](https://nodejs.org).
+---
 
-### Installation
+### ⚙️ Technical Features
 
-1. Clone the repository to your local machine:
-    ```bash
-    git clone https://github.com/sujaltangde/JobLane.git 
-    ```
+* 🔐 Secure authentication using JWT
+* ☁️ Cloudinary integration for file uploads
+* 📦 RESTful API architecture
+* ⚡ Fast frontend with React + Redux
+* 🌐 Fully deployed (Netlify + Render + MongoDB Atlas)
 
-2. Change into the frontend directory:
-    ```bash
-    cd client
-    ```
+---
 
-3. Install the frontend dependencies:
-    ```bash
-    npm install
-    ```
+## 🏗️ Tech Stack
 
-4. Run the development server:
-    ```bash
-    npm run dev
-    ```
+### Frontend
 
-5. Return to the main directory and change into the backend directory:
-    ```bash
-    cd ..
-    cd server
-    ```
+* React.js
+* Tailwind CSS
+* Axios
 
-6. Install the backend dependencies:
-    ```bash
-    npm install
-    ```
+### Backend
 
-7. Run the development server:
-    ```bash
-    nodemon server.js
-    ```
+* Node.js
+* Express.js
+* MongoDB (Atlas)
+* Mongoose
+* JWT Authentication
 
+### Deployment
 
+* Frontend → Netlify
+* Backend → Render
+* Database → MongoDB Atlas
+* Media Storage → Cloudinary
 
-<h2>🍰 Contribution Guidelines:</h2>
+---
 
-Any contributor who wishes to contribute to this project should first read the README thoroughly. Study how the project is built and done, familiarize yourself with its structure and components. Take note of any bugs present in the project. If you find any raise an issue on the project's repository. Wait until a mentor assigns the issue to you. Once assigned start working on the development of the fix or improvement. After completing the development raise a pull request (PR) for the changes to be reviewed and merged into the project.
+## 📁 Folder Structure
 
-  
-  
-<h2>💻 Built with</h2>
+```bash
+JobOrbit/
+│
+├── client/          # React Frontend
+├── server/          # Node.js Backend
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── middlewares/
+│   └── config/
+│
+└── README.md
+```
 
-- **Frontend**: React.js, Redux
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB 
-- **Styling**: Tailwind CSS, Material UI, Mantine UI
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the server folder and add:
+
+```env
+PORT=3000
+DB=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+CLOUDINARY_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+---
+
+## 🚀 Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/Osmaditya/JOB-ORBIT-MERN
+cd joborbit
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+cd server
+npm install
+
+cd ../client
+npm install
+```
+
+### 3️⃣ Run locally
+
+```bash
+# Backend
+cd server
+npm run dev
+
+# Frontend
+cd client
+npm start
+```
+
+---
+
+## 🧠 Future Improvements
+
+* 🔔 Notifications system
+* 💬 Real-time chat between recruiter & applicant
+* 📈 Advanced analytics dashboard
+* 🌍 Multi-language support
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork the repo and submit a PR.
+
+---
+
+## 📬 Made By
+
+👨‍💻 **Aditya**
+
+---
+
+## ⭐ Show Your Support
+
+If you like this project, please ⭐ the repository!
+
+---
