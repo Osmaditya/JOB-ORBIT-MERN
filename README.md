@@ -2,7 +2,7 @@
 
 ![Demo App](/client/public/screenshot-for-readme.png)
 
-[🚀 Live Demo](https://keepnotes-mern.onrender.com)
+[🚀 Live Demo](https://joborbitwebsite.netlify.app)
 
 ---
 
